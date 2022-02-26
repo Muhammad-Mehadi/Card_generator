@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TRY CALCULATOR</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+        }
+        
+        .main {
+            margin: 30px 0px;
+            display: grid;
+            grid-template-columns: auto auto;
+            column-gap: 5px;
+            row-gap: 5px;
+            font-size: large;
+        }
+        
+        .main1 {
+            text-align: right;
+            line-height: 60px;
+            height: 60px;
+        }
+        
+        input[type="text"] {
+            padding: 20px 10px;
+            font-size: large;
+            border: 1px solid black;
+            border-radius: 3px;
+        }
+        
+        .card {
+            margin: 0% 10%;
+            height: 200px;
+            position: relative;
+            border: 3px solid green;
+            border-radius: 3px;
+            background-color: burlywood;
+        }
+        
+        .card div {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .btn {
+            margin: 3% 40%;
+            background-color: black;
+            border-radius: 2px;
+            border: 0px solid orange;
+            font-size: larger;
+            color: aliceblue;
+            height: 60px;
+            width: 20%;
+        }
+        
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="main1">Name:</div>
+        <div><input type="text" id="name" /></div>
+        <div class="main1">Department:</div>
+        <div><input type="text" id="department" /></div>
+        <div class="main1">University:</div>
+        <div><input type="text" id="university" /></div>
+    </div>
+    <input class="btn" type="submit" onclick="Generate()" />
+    <div class="card hide" id="card">
+        <div>
+            <h3 id="nameID"></h3>
+            <h3 id="departmentID"></h3>
+            <h4 id="universityID"></h4>
+        </div>
+    </div>
+    <script>
+        function Generate() {
+            var name = document.getElementById("name").value;
+            var department = document.getElementById("department").value;
+            var university = document.getElementById("university").value;
+            if (name == "" || department == "" || university == "") {
+                document.getElementById("card").classList.add("hide");
+                if (name == "") {
+                    document.getElementById("name").style.border = "solid red";
+                } else {
+                    document.getElementById("name").style.border = "solid black";
+                }
+                if (department == "") {
+                    document.getElementById("department").style.border = "solid red";
+                } else {
+                    document.getElementById("department").style.border = "solid black";
+                }
+                if (university == "") {
+                    document.getElementById("university").style.border = "solid red";
+                } else {
+                    document.getElementById("university").style.border = "solid black";
+                }
+            } else {
+                document.getElementById("name").style.border = "solid black";
+                document.getElementById("department").style.border = "solid black";
+                document.getElementById("university").style.border = "solid black";
+                console.log(name + department + university);
+                document.getElementById("card").classList.remove("hide");
+                document.getElementById("nameID").innerText = "Name: " + name;
+                document.getElementById("departmentID").innerText =
+                    "Department: " + department;
+                document.getElementById("universityID").innerText =
+                    "University: " + university;
+            }
+        }
+    </script>
+</body>
+
+</html>
